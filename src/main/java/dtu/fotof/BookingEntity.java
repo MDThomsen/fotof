@@ -18,6 +18,9 @@ public class BookingEntity implements Serializable {
     protected String locationAddress;
     protected String specialRequest;
     protected String assignedPhotographer;
+    protected boolean photoshootDone;
+    protected boolean picturesPrepared;
+    protected boolean specialRequestDone;
     protected boolean packaged;
     protected boolean delivered;
 
@@ -98,6 +101,31 @@ public class BookingEntity implements Serializable {
 
     public void setAssignedPhotographer(String assignedPhotographer) {
         this.assignedPhotographer = assignedPhotographer;
+    }
+
+
+    public boolean isPhotoshootDone() {
+        return photoshootDone;
+    }
+
+    public void setPhotoshootDone(boolean photoshootDone) {
+        this.photoshootDone = photoshootDone;
+    }
+
+    public boolean isPicturesPrepared() {
+        return picturesPrepared;
+    }
+
+    public void setPicturesPrepared(boolean picturesPrepared) {
+        this.picturesPrepared = picturesPrepared;
+    }
+
+    public boolean isSpecialRequestDone() {
+        return specialRequestDone;
+    }
+
+    public void setSpecialRequestDone(boolean specialRequestDone) {
+        this.specialRequestDone = specialRequestDone;
     }
 
     public boolean isPackaged() {

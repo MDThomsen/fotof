@@ -34,7 +34,7 @@ public class ApproveOrderController implements Serializable {
     public BookingEntity getOrderEntity() {
         if (bookingEntity == null) {
             // Load the order entity from the database if not already cached
-            bookingEntity = orderBusinessLogic.getOrder((Long) businessProcess.getVariable("orderId"));
+            bookingEntity = orderBusinessLogic.getBooking((Long) businessProcess.getVariable("orderId"));
         }
         return bookingEntity;
     }

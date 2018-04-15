@@ -2,6 +2,8 @@ package dtu.fotof;
 
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.cdi.jsf.TaskForm;
+import org.omg.CORBA.portable.Delegate;
+
 import javax.inject.Inject;
 import javax.ejb.Stateless;
 import javax.inject.Named;
@@ -10,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Map;
+import java.util.Random;
 
 @Stateless
 @Named
@@ -21,7 +24,7 @@ public class OrderBusinessLogic implements Serializable{
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void persistOrder(DelegateExecution delegateExecution) {
+    public void persistBooking(DelegateExecution delegateExecution) {
         // Create new order instance
         BookingEntity bookingEntity = new BookingEntity();
 
@@ -44,15 +47,31 @@ public class OrderBusinessLogic implements Serializable{
         delegateExecution.removeVariables(variables.keySet());
 
         // Add newly created order id as process variable
-        delegateExecution.setVariable("orderId", bookingEntity.getId());
+        delegateExecution.setVariable("bookingId", bookingEntity.getId());
+    }
+
+    public void assignPhotographer(DelegateExecution delegateExecution) {
+        Map<String, Object> variables = delegateExecution.getVariables();
+
+        BookingEntity bookingEntity = getBooking((Long) variables.get("bookingId"));
+
+        Random rand = new Random();
+        double n = rand.nextDouble();
+
+        if(n < 0.5)
+            bookingEntity.setAssignedPhotographer("Jean-Claude");
+        else
+            bookingEntity.setAssignedPhotographer("Jørgen");
+
+        mergeOrderAndCompleteTask(bookingEntity);
     }
 
     // Inject task form available through the Camunda cdi artifact
 
 
-    public BookingEntity getOrder(Long orderId) {
+    public BookingEntity getBooking(Long bookingId) {
         // Load order entity from database
-        return entityManager.find(BookingEntity.class, orderId);
+        return entityManager.find(BookingEntity.class, bookingId);
     }
 
     /*
@@ -70,5 +89,4 @@ public class OrderBusinessLogic implements Serializable{
             throw new RuntimeException("Cannot complete task", e);
         }
     }
-
 }
