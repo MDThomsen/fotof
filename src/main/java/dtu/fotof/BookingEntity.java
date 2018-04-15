@@ -17,7 +17,6 @@ public class BookingEntity implements Serializable {
     protected String location;
     protected String locationAddress;
     protected String specialRequest;
-    protected boolean isSpecialRequest;
     protected String assignedPhotographer;
     protected boolean photoshootDone;
     protected boolean picturesPrepared;
@@ -103,7 +102,6 @@ public class BookingEntity implements Serializable {
     public void setAssignedPhotographer(String assignedPhotographer) {
         this.assignedPhotographer = assignedPhotographer;
     }
-
 
     public boolean isPhotoshootDone() {
         return photoshootDone;

@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Random;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Stateless
@@ -23,6 +24,8 @@ public class BookingBusinessLogic {
     // Inject the entity manager
     @PersistenceContext
     private EntityManager entityManager;
+
+    private static Logger LOGGER = Logger.getLogger(BookingBusinessLogic.class.getName());
 
     public void persistBooking(DelegateExecution delegateExecution) {
         // Create new order instance
@@ -98,7 +101,10 @@ public class BookingBusinessLogic {
 
         BookingEntity booking = getBooking(bookingId);
 
-        return !booking.getSpecialRequest().equals("None");
+        LOGGER.log(Level.INFO, "\n\nSpecial request variable: " + booking.getSpecialRequest());
+        LOGGER.log(Level.INFO, "\n\nResult: " + booking.getSpecialRequest().equals("None"));
+
+        return !booking.getSpecialRequest().equals("none");
     }
 
 }
