@@ -19,11 +19,11 @@
       <bpmn:outgoing>SequenceFlow_0y6g80z</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_1qr2z7y" />
     </bpmn:intermediateThrowEvent>
-    <bpmn:userTask id="UserTask_0bo6zdx" name="Prepare Pictures" camunda:formKey="app:preparepictures.jsf">
+    <bpmn:userTask id="UserTask_0bo6zdx" name="Prepare Pictures" camunda:formKey="app:preparepictures.jsf" camunda:candidateGroups="Tech">
       <bpmn:incoming>SequenceFlow_13j8htq</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1b0zxap</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="UserTask_1j2asv8" name="Handle Photoshoot" camunda:formKey="app:handleshooting.jsf">
+    <bpmn:userTask id="UserTask_1j2asv8" name="Handle Photoshoot" camunda:formKey="app:handleshooting.jsf" camunda:candidateGroups="Photographer">
       <bpmn:incoming>SequenceFlow_16z7cve</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_13j8htq</bpmn:outgoing>
     </bpmn:userTask>
@@ -38,7 +38,7 @@
       <bpmn:incoming>SequenceFlow_0taasuf</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_128dgzy</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="UserTask_0yrx0o0" name="Mark Order As Delivered">
+    <bpmn:userTask id="UserTask_0yrx0o0" name="Mark Order As Delivered" camunda:candidateGroups="CustRep">
       <bpmn:incoming>SequenceFlow_128dgzy</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0j2fzj1</bpmn:outgoing>
     </bpmn:userTask>
@@ -51,12 +51,12 @@
       <bpmn:incoming>SequenceFlow_0j2fzj1</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_0zmubt8" name="Yes" sourceRef="ExclusiveGateway_0z3vrv3" targetRef="UserTask_04p0vo8">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${bookingBusinessLogic.isSpecialBooking(execution)}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0n9h4rm" sourceRef="UserTask_04p0vo8" targetRef="ExclusiveGateway_10e1yn8" />
     <bpmn:sequenceFlow id="SequenceFlow_0dp8xvs" sourceRef="ServiceTask_10citsq" targetRef="ExclusiveGateway_0z3vrv3" />
     <bpmn:sequenceFlow id="SequenceFlow_0o5ulp1" name="No" sourceRef="ExclusiveGateway_0z3vrv3" targetRef="ExclusiveGateway_10e1yn8">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${false}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!bookingBusinessLogic.isSpecialBooking(execution)}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0y6g80z" sourceRef="IntermediateThrowEvent_1o905sl" targetRef="ServiceTask_10citsq" />
     <bpmn:sequenceFlow id="SequenceFlow_1b0zxap" sourceRef="UserTask_0bo6zdx" targetRef="IntermediateThrowEvent_1o905sl" />

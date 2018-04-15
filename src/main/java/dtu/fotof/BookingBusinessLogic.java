@@ -87,4 +87,18 @@ public class BookingBusinessLogic {
             throw new RuntimeException("Cannot complete task", e);
         }
     }
+
+    public boolean isSpecialBooking(DelegateExecution delegateExecution) {
+
+        // Get all process variables
+        Map<String, Object> variables = delegateExecution.getVariables();
+
+        Long bookingId = (Long) variables.get("bookingId");
+
+
+        BookingEntity booking = getBooking(bookingId);
+
+        return !booking.getSpecialRequest().equals("None");
+    }
+
 }
