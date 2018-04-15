@@ -34,11 +34,11 @@
     <bpmn:startEvent id="StartEvent_0yc1fbs" name="Receive booking" camunda:formKey="app:placebooking.jsf">
       <bpmn:outgoing>SequenceFlow_1oreki8</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:userTask id="UserTask_16bdm6o" name="Prepare Package">
+    <bpmn:userTask id="UserTask_16bdm6o" name="Prepare Package" camunda:formKey="app:preparepackage.jsf">
       <bpmn:incoming>SequenceFlow_0taasuf</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_128dgzy</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="UserTask_0yrx0o0" name="Mark Order As Delivered" camunda:candidateGroups="CustRep">
+    <bpmn:userTask id="UserTask_0yrx0o0" name="Mark Order As Delivered" camunda:formKey="app:markasdelivered.jsf" camunda:candidateGroups="CustRep">
       <bpmn:incoming>SequenceFlow_128dgzy</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0j2fzj1</bpmn:outgoing>
     </bpmn:userTask>
