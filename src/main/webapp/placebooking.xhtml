@@ -19,31 +19,44 @@
         <h:form id="submitForm">
             <h:panelGrid columns="2">
 
-                <label for="pizza">Pizza</label>
-                <h:selectOneMenu id="pizza" value="#{processVariables['pizza']}">
-                    <f:selectItem itemValue="Margarita" itemLabel="Margarita"/>
-                    <f:selectItem itemValue="Salami" itemLabel="Salami"/>
-                    <f:selectItem itemValue="Tonno" itemLabel="Tonno"/>
-                    <f:selectItem itemValue="Prosciutto" itemLabel="Prosciutto"/>
-                </h:selectOneMenu>
-
-
                 <label for="customerName">CustomerName</label>
                 <!-- create process variables using the processVariables map. -->
                 <h:inputText id="customerName" value="#{processVariables['customerName']}" required="true" />
 
 
-                <label for="address">Address</label>
+                <label for="shippingAddress">Shipping Address</label>
                 <!-- create process variables using the processVariables map. -->
-                <h:inputText id="address" value="#{processVariables['address']}" required="true" />
+                <h:inputText id="shippingAddress" value="#{processVariables['shippingAddress']}" required="true" />
+
+                <label for="email">Email</label>
+                <!-- create process variables using the processVariables map. -->
+                <h:inputText id="email" value="#{processVariables['email']}" required="true" />
+
+                <label for="location">Location</label>
+                <h:selectOneMenu id="location" value="#{processVariables['location']}">
+                    <f:selectItem itemValue="inHouse" itemLabel="In-house"/>
+                    <f:selectItem itemValue="onLocation" itemLabel="On locoation"/>
+                </h:selectOneMenu>
+
+                <label for="locationAddress">On location address</label>
+                <!-- create process variables using the processVariables map. -->
+                <h:inputText id="locationAddress" value="#{processVariables['locationAddress']}" required="false" />
+
+                <label for="specialRequest">Special Request</label>
+                <h:selectOneMenu id="specialRequest" value="#{processVariables['specialRequest']}">
+                    <f:selectItem itemValue="none" itemLabel="None"/>
+                    <f:selectItem itemValue="funny" itemLabel="Funny edits"/>
+                    <f:selectItem itemValue="artsy" itemLabel="Artsy"/>
+                </h:selectOneMenu>
 
             </h:panelGrid>
+
 
             <!-- The button starts a new process instance. This ends the conversation and redirects us to the tasklist.
 
                  NOTE: Syntax is different when working on user task forms, see file "approveLoanRequest.xhtml".
             -->
-            <h:commandButton id="submit_button" value="Order Pizza" action="#{camundaTaskForm.completeProcessInstanceForm()}" />
+            <h:commandButton id="submit_button" value="Make Booking" action="#{camundaTaskForm.completeProcessInstanceForm()}" />
 
             <h:messages style="color:red;margin:8px;" />
         </h:form>
