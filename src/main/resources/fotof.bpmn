@@ -17,7 +17,7 @@
     <bpmn:intermediateThrowEvent id="IntermediateThrowEvent_1o905sl">
       <bpmn:incoming>SequenceFlow_1b0zxap</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0y6g80z</bpmn:outgoing>
-      <bpmn:messageEventDefinition id="MessageEventDefinition_1qr2z7y" />
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1qr2z7y" camunda:expression="${formController.sendMail()}" />
     </bpmn:intermediateThrowEvent>
     <bpmn:userTask id="UserTask_0bo6zdx" name="Prepare Pictures" camunda:formKey="app:preparepictures.jsf" camunda:candidateGroups="Tech">
       <bpmn:incoming>SequenceFlow_13j8htq</bpmn:incoming>

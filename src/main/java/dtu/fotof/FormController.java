@@ -9,6 +9,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Named
 @ConversationScoped
@@ -42,5 +44,11 @@ public class FormController implements Serializable {
     public void submitForm() throws IOException {
         // Persist updated order entity and complete task form
         bookingBusinessLogic.mergeOrderAndCompleteTask(bookingEntity);
+    }
+
+    public void sendMail() {
+        BookingEntity bookingEntity = getBookingEntity();
+        Logger logger = Logger.getLogger(BookingBusinessLogic.class.getName());
+        logger.log(Level.INFO, "\n\n\nSending Email:\nDear {0}, your Fotof order {1} has been prepared.\n\n\n", new String[]{bookingEntity.getCustomerName(), String.valueOf(bookingEntity.getId())});
     }
 }
