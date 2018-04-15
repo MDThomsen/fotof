@@ -17,13 +17,13 @@
   </h:head>
   <h:body>
     <h1>Is the shooting complete?:</h1>
-    <p>CustomerId: #{handlePhotoshootController.getBookingEntity().getId()} <br/>
-     Customer: #{handlePhotoshootController.getBookingEntity().getCustomerName()} <br/>
-     Assigned Photographer: #{handlePhotoshootController.getBookingEntity().getAssignedPhotographer()}</p>
+    <p>CustomerId: #{formController.getBookingEntity().getId()} <br/>
+     Customer: #{formController.getBookingEntity().getCustomerName()} <br/>
+     Assigned Photographer: #{formController.getBookingEntity().getAssignedPhotographer()}</p>
     <h:form id="submitForm">
       <h:outputLabel>Photo shoot complete</h:outputLabel>
-      <h:selectBooleanCheckbox value="#{handlePhotoshootController.getBookingEntity().photoshootDone}"/><br/>
-      <h:commandButton id="submit_button" value="Complete step" action="#{handlePhotoshootController.submitForm()}" />
+      <h:selectBooleanCheckbox value="#{formController.getBookingEntity().photoshootDone}"/><br/>
+      <h:commandButton id="submit_button" value="Complete step" action="#{formController.submitForm()}" />
     </h:form>
   </h:body>
   </f:view>

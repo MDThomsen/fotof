@@ -19,7 +19,7 @@
       <bpmn:outgoing>SequenceFlow_0y6g80z</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_1qr2z7y" />
     </bpmn:intermediateThrowEvent>
-    <bpmn:userTask id="UserTask_0bo6zdx" name="Prepare Pictures">
+    <bpmn:userTask id="UserTask_0bo6zdx" name="Prepare Pictures" camunda:formKey="app:preparepictures.jsf">
       <bpmn:incoming>SequenceFlow_13j8htq</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1b0zxap</bpmn:outgoing>
     </bpmn:userTask>
