@@ -22,45 +22,45 @@ public class OrderBusinessLogic {
 
     public void persistOrder(DelegateExecution delegateExecution) {
         // Create new order instance
-        OrderEntity orderEntity = new OrderEntity();
+        BookingEntity bookingEntity = new BookingEntity();
 
         // Get all process variables
         Map<String, Object> variables = delegateExecution.getVariables();
 
         // Set order attributes
-        orderEntity.setCustomer((String) variables.get("customer"));
-        orderEntity.setAddress((String) variables.get("address"));
-        orderEntity.setPizza((String) variables.get("pizza"));
+        //bookingEntity.setCustomer((String) variables.get("customer"));
+        //bookingEntity.setAddress((String) variables.get("address"));
+        //bookingEntity.setPizza((String) variables.get("pizza"));
 
     /*
       Persist order instance and flush. After the flush the
       id of the order instance is set.
     */
-        entityManager.persist(orderEntity);
+        entityManager.persist(bookingEntity);
         entityManager.flush();
 
         // Remove no longer needed process variables
         delegateExecution.removeVariables(variables.keySet());
 
         // Add newly created order id as process variable
-        delegateExecution.setVariable("orderId", orderEntity.getId());
+        delegateExecution.setVariable("orderId", bookingEntity.getId());
     }
 
     // Inject task form available through the Camunda cdi artifact
 
 
-    public OrderEntity getOrder(Long orderId) {
+    public BookingEntity getOrder(Long orderId) {
         // Load order entity from database
-        return entityManager.find(OrderEntity.class, orderId);
+        return entityManager.find(BookingEntity.class, orderId);
     }
 
     /*
       Merge updated order entity and complete task form in one transaction. This ensures
       that both changes will rollback if an error occurs during transaction.
      */
-    public void mergeOrderAndCompleteTask(OrderEntity orderEntity) {
+    public void mergeOrderAndCompleteTask(BookingEntity bookingEntity) {
         // Merge detached order entity with current persisted state
-        entityManager.merge(orderEntity);
+        entityManager.merge(bookingEntity);
         try {
             // Complete user task from
             taskForm.completeTask();
