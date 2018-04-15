@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_05omjrd" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="1.12.0">
   <bpmn:process id="Process_0cyis6h" name="Fotof Process" isExecutable="true">
-    <bpmn:userTask id="UserTask_04p0vo8" name="Perform Additional Editing">
+    <bpmn:userTask id="UserTask_04p0vo8" name="Perform Additional Editing" camunda:formKey="app:additionalediting.jsf">
       <bpmn:incoming>SequenceFlow_0zmubt8</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_0n9h4rm</bpmn:outgoing>
     </bpmn:userTask>
@@ -31,7 +31,7 @@
       <bpmn:incoming>SequenceFlow_1oreki8</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_16z7cve</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:startEvent id="StartEvent_0yc1fbs" name="Receive booking" camunda:formKey="embedded:app:placebooking.jsf">
+    <bpmn:startEvent id="StartEvent_0yc1fbs" name="Receive booking" camunda:formKey="app:placebooking.jsf">
       <bpmn:outgoing>SequenceFlow_1oreki8</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:userTask id="UserTask_16bdm6o" name="Prepare Package">
