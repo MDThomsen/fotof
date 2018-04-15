@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="fotof:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="pizza-order.war">
+    <root id="archive" name="fotof.war">
       <element id="artifact" artifact-name="fotof:war exploded" />
     </root>
   </artifact>
