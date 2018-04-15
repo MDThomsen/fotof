@@ -32,7 +32,7 @@ public class BookingEntity implements Serializable {
         return id;
     }
 
-    public long setId(Long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
