@@ -29,18 +29,18 @@ public class ApproveOrderController implements Serializable {
     private OrderBusinessLogic orderBusinessLogic;
 
     // Caches the OrderEntity during the conversation
-    private OrderEntity orderEntity;
+    private BookingEntity bookingEntity;
 
-    public OrderEntity getOrderEntity() {
-        if (orderEntity == null) {
+    public BookingEntity getOrderEntity() {
+        if (bookingEntity == null) {
             // Load the order entity from the database if not already cached
-            orderEntity = orderBusinessLogic.getOrder((Long) businessProcess.getVariable("orderId"));
+            bookingEntity = orderBusinessLogic.getOrder((Long) businessProcess.getVariable("orderId"));
         }
-        return orderEntity;
+        return bookingEntity;
     }
 
     public void submitForm() throws IOException {
         // Persist updated order entity and complete task form
-        orderBusinessLogic.mergeOrderAndCompleteTask(orderEntity);
+        orderBusinessLogic.mergeOrderAndCompleteTask(bookingEntity);
     }
 }
