@@ -51,12 +51,12 @@
       <bpmn:incoming>SequenceFlow_0j2fzj1</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SequenceFlow_0zmubt8" name="Yes" sourceRef="ExclusiveGateway_0z3vrv3" targetRef="UserTask_04p0vo8">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${bookingBusinessLogic.isSpecialBooking(execution)}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0n9h4rm" sourceRef="UserTask_04p0vo8" targetRef="ExclusiveGateway_10e1yn8" />
     <bpmn:sequenceFlow id="SequenceFlow_0dp8xvs" sourceRef="ServiceTask_10citsq" targetRef="ExclusiveGateway_0z3vrv3" />
     <bpmn:sequenceFlow id="SequenceFlow_0o5ulp1" name="No" sourceRef="ExclusiveGateway_0z3vrv3" targetRef="ExclusiveGateway_10e1yn8">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${false}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!bookingBusinessLogic.isSpecialBooking(execution)}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="SequenceFlow_0y6g80z" sourceRef="IntermediateThrowEvent_1o905sl" targetRef="ServiceTask_10citsq" />
     <bpmn:sequenceFlow id="SequenceFlow_1b0zxap" sourceRef="UserTask_0bo6zdx" targetRef="IntermediateThrowEvent_1o905sl" />
