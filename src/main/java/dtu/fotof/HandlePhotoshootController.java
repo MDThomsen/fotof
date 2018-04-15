@@ -12,7 +12,7 @@ import java.io.Serializable;
 
 @Named
 @ConversationScoped
-public class ApproveOrderController implements Serializable {
+public class HandlePhotoshootController implements Serializable {
 
     private static  final long serialVersionUID = 1L;
 
@@ -26,21 +26,21 @@ public class ApproveOrderController implements Serializable {
 
     // Inject the OrderBusinessLogic to update the persisted order
     @Inject
-    private OrderBusinessLogic orderBusinessLogic;
+    private BookingBusinessLogic bookingBusinessLogic;
 
     // Caches the OrderEntity during the conversation
     private BookingEntity bookingEntity;
 
-    public BookingEntity getOrderEntity() {
+    public BookingEntity getBookingEntity() {
         if (bookingEntity == null) {
             // Load the order entity from the database if not already cached
-            bookingEntity = orderBusinessLogic.getBooking((Long) businessProcess.getVariable("orderId"));
+            bookingEntity = bookingBusinessLogic.getBooking((Long) businessProcess.getVariable("bookingId"));
         }
         return bookingEntity;
     }
 
     public void submitForm() throws IOException {
         // Persist updated order entity and complete task form
-        orderBusinessLogic.mergeOrderAndCompleteTask(bookingEntity);
+        bookingBusinessLogic.mergeOrderAndCompleteTask(bookingEntity);
     }
 }
