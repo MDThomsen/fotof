@@ -31,7 +31,7 @@
       <bpmn:incoming>SequenceFlow_1oreki8</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_16z7cve</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:startEvent id="StartEvent_0yc1fbs" name="Receive booking" camunda:formKey="app:placebooking.jsf">
+    <bpmn:startEvent id="StartEvent_0yc1fbs" name="Receive booking" camunda:formKey="embedded:app:placebooking.jsf">
       <bpmn:outgoing>SequenceFlow_1oreki8</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:userTask id="UserTask_16bdm6o" name="Prepare Package">
