@@ -2,7 +2,7 @@
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:signavio="http://www.signavio.com" id="sid-d1de4a85-6f88-4685-856e-76fee9a0738f" targetNamespace="http://www.signavio.com" expressionLanguage="http://www.w3.org/TR/XPath" exporter="Camunda Modeler" exporterVersion="1.12.0" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL http://www.omg.org/spec/BPMN/2.0/20100501/BPMN20.xsd">
   <dataStore id="sid-757c7f63-9dfd-4308-b6bc-c839e524e272" name="File server" capacity="0" isUnlimited="false" />
   <dataStore id="sid-b954323a-09ef-4015-b504-aadd70304530" name="Customer db" capacity="0" isUnlimited="false" />
-  <collaboration id="sid-3549ddc1-7ec7-4a3f-8c5a-26ab874aec51">
+  <collaboration id="fotof">
     <extensionElements>
       <signavio:signavioDiagramMetaData metaKey="prozessreifegrad" metaValue="" />
       <signavio:signavioDiagramMetaData metaKey="iso9000ff" metaValue="" />
@@ -27,13 +27,8 @@
         <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
       </extensionElements>
     </messageFlow>
-    <messageFlow id="sid-7AE9B543-3DEB-4F34-95BB-F567473FE377" name="" sourceRef="sid-794B57F5-46E9-4DCE-ACF4-D57A7A904B3C" targetRef="sid-8212A887-A4A1-4648-A70A-6B9E6737FA0D">
-      <extensionElements>
-        <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
-      </extensionElements>
-    </messageFlow>
   </collaboration>
-  <process id="sid-B6BAC97B-9F88-41D3-8C70-10E558714B02" name="Fotof" processType="None" isClosed="false" isExecutable="false">
+  <process id="sid-B6BAC97B-9F88-41D3-8C70-10E558714B02" name="Fotof" processType="None" isClosed="false" isExecutable="true">
     <extensionElements />
     <laneSet id="sid-da8d98f0-935d-40f3-a8b1-085d81dce2f9">
       <lane id="sid-A6E95770-507A-478F-8B20-1CBB3B062D4E" name="Technician">
@@ -54,10 +49,10 @@
           <signavio:signavioMetaData metaKey="bgcolor" metaValue="" />
           <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
         </extensionElements>
-        <flowNodeRef>sid-8212A887-A4A1-4648-A70A-6B9E6737FA0D</flowNodeRef>
         <flowNodeRef>sid-4005BB76-4391-43E7-9E40-D9D9A274A5C8</flowNodeRef>
         <flowNodeRef>sid-ED82A6CC-B463-4E92-B80D-9D4129355D82</flowNodeRef>
         <flowNodeRef>sid-FC280F76-31C5-4732-A7A9-39FFD623C37B</flowNodeRef>
+        <flowNodeRef>sid-8212A887-A4A1-4648-A70A-6B9E6737FA0D</flowNodeRef>
       </lane>
       <lane id="sid-9F652FCE-2968-4F94-83D3-886318D265BA" name="Photographer">
         <extensionElements>
@@ -154,15 +149,6 @@
       <incoming>sid-3C4BC36E-2F80-4226-ADAA-C0CB6D135C54</incoming>
       <outgoing>sid-93E5ACAF-54A3-4F01-87C4-4849A8E43DEA</outgoing>
     </userTask>
-    <startEvent id="sid-8212A887-A4A1-4648-A70A-6B9E6737FA0D" name="Receive booking" camunda:formKey="app:placebooking.jsf">
-      <extensionElements>
-        <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffff" />
-        <signavio:signavioMetaData metaKey="bordercolor" metaValue="#000000" />
-        <signavio:signavioMetaData metaKey="vorgngerprozesse" metaValue="[]" />
-      </extensionElements>
-      <outgoing>sid-80BC7ABD-3E87-4C56-8F6C-AF3B608C1B53</outgoing>
-      <messageEventDefinition id="sid-0dc0721f-f157-49ef-9c94-6d2b6855be41" />
-    </startEvent>
     <serviceTask id="sid-4005BB76-4391-43E7-9E40-D9D9A274A5C8" name="Process request" implementation="##WebService">
       <extensionElements>
         <signavio:signavioMetaData metaKey="bgcolor" metaValue="#ffffcc" />
@@ -304,6 +290,9 @@
         <signavio:signavioLabel ref="text_name" valign="middle" x="-39.0" y="14.0" />
       </extensionElements>
     </dataStoreReference>
+    <startEvent id="sid-8212A887-A4A1-4648-A70A-6B9E6737FA0D" name="Receive booking" camunda:formKey="app:placebooking.jsf">
+      <outgoing>sid-80BC7ABD-3E87-4C56-8F6C-AF3B608C1B53</outgoing>
+    </startEvent>
   </process>
   <process id="sid-C3DCBD4E-1A2A-450F-BCFD-21DFB1E2B091" name="Customer" processType="None" isClosed="false" isExecutable="false">
     <extensionElements />
@@ -317,7 +306,7 @@
     </laneSet>
   </process>
   <bpmndi:BPMNDiagram id="sid-a05e00b4-20a2-496e-af7b-ad7442e8a177">
-    <bpmndi:BPMNPlane id="sid-32269e0c-3aa3-4679-9086-7d30311401ac" bpmnElement="sid-3549ddc1-7ec7-4a3f-8c5a-26ab874aec51">
+    <bpmndi:BPMNPlane id="sid-32269e0c-3aa3-4679-9086-7d30311401ac" bpmnElement="fotof">
       <bpmndi:BPMNShape id="sid-C036FF87-712E-4E41-9745-54DCF78E7F18_gui" bpmnElement="sid-C036FF87-712E-4E41-9745-54DCF78E7F18" isHorizontal="true">
         <omgdc:Bounds x="43.88540466626711" y="378.95685219993817" width="2148.061002665871" height="1188.9395651812572" />
         <bpmndi:BPMNLabel labelStyle="sid-d2a00f76-b4cb-4407-b01d-71e9468a5d42">
@@ -385,12 +374,6 @@
         <omgdc:Bounds x="1824.2967282118607" y="1251.1723464691047" width="100" height="80" />
         <bpmndi:BPMNLabel labelStyle="sid-d2a00f76-b4cb-4407-b01d-71e9468a5d42">
           <omgdc:Bounds x="1829.9395809950638" y="1283.1723464691047" width="88.71429443359375" height="12" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="sid-8212A887-A4A1-4648-A70A-6B9E6737FA0D_gui" bpmnElement="sid-8212A887-A4A1-4648-A70A-6B9E6737FA0D">
-        <omgdc:Bounds x="166.05664907629722" y="575.4604450574207" width="30" height="30" />
-        <bpmndi:BPMNLabel labelStyle="sid-52a834ef-44bc-4c8d-bd28-e07e97ebc581">
-          <omgdc:Bounds x="141.10307775671714" y="607.4604450574207" width="79.90714263916016" height="11" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="sid-4005BB76-4391-43E7-9E40-D9D9A274A5C8_gui" bpmnElement="sid-4005BB76-4391-43E7-9E40-D9D9A274A5C8">
@@ -464,8 +447,11 @@
         <omgdi:waypoint x="1666.8778749566463" y="1291.61780164924" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="sid-80BC7ABD-3E87-4C56-8F6C-AF3B608C1B53_gui" bpmnElement="sid-80BC7ABD-3E87-4C56-8F6C-AF3B608C1B53">
-        <omgdi:waypoint x="196.05664907629722" y="590.4604450574207" />
-        <omgdi:waypoint x="339.0944311283948" y="590.4604450574207" />
+        <omgdi:waypoint x="199" y="590" />
+        <omgdi:waypoint x="339" y="590" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="224" y="565" width="90" height="20" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="sid-2B8BC0FB-0E51-4B41-99F8-22B25BA5B77F_gui" bpmnElement="sid-2B8BC0FB-0E51-4B41-99F8-22B25BA5B77F">
         <omgdi:waypoint x="388.9563925734124" y="630.4604450574207" />
@@ -512,10 +498,12 @@
         <omgdi:waypoint x="812.2024619357876" y="1379.4982317862539" />
         <omgdi:waypoint x="812.2024619357876" y="314.6243360475414" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="sid-7AE9B543-3DEB-4F34-95BB-F567473FE377_gui" bpmnElement="sid-7AE9B543-3DEB-4F34-95BB-F567473FE377">
-        <omgdi:waypoint x="181.05664907629722" y="314.62433604754136" />
-        <omgdi:waypoint x="181.05664907629722" y="575.4604450574207" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_0iw520y_di" bpmnElement="sid-8212A887-A4A1-4648-A70A-6B9E6737FA0D">
+        <omgdc:Bounds x="163" y="572" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="141" y="607" width="81" height="12" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
     <bpmndi:BPMNLabelStyle id="sid-52a834ef-44bc-4c8d-bd28-e07e97ebc581">
       <omgdc:Font name="Arial" size="11" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" />

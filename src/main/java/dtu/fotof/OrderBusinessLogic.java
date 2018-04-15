@@ -8,11 +8,12 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Map;
 
 @Stateless
 @Named
-public class OrderBusinessLogic {
+public class OrderBusinessLogic implements Serializable{
     @Inject
     private TaskForm taskForm;
 
