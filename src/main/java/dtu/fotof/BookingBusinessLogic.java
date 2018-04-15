@@ -39,6 +39,7 @@ public class BookingBusinessLogic {
         bookingEntity.setLocationAddress((String) variables.get("locationAddress"));
         bookingEntity.setSpecialRequest((String) variables.get("specialRequest"));
 
+        assignPhotographer(bookingEntity);
     /*
       Persist order instance and flush. After the flush the
       id of the order instance is set.
@@ -53,11 +54,7 @@ public class BookingBusinessLogic {
         delegateExecution.setVariable("bookingId", bookingEntity.getId());
     }
 
-    public void assignPhotographer(DelegateExecution delegateExecution) {
-        Map<String, Object> variables = delegateExecution.getVariables();
-
-        BookingEntity bookingEntity = getBooking((Long) variables.get("bookingId"));
-
+    private void assignPhotographer(BookingEntity bookingEntity) {
         Random rand = new Random();
         double n = rand.nextDouble();
 
@@ -65,8 +62,6 @@ public class BookingBusinessLogic {
             bookingEntity.setAssignedPhotographer("Jean-Claude");
         else
             bookingEntity.setAssignedPhotographer("Jørgen");
-
-        mergeOrderAndCompleteTask(bookingEntity);
     }
 
     // Inject task form available through the Camunda cdi artifact
