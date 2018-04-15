@@ -12,10 +12,11 @@ import javax.persistence.PersistenceContext;
 import java.io.IOException;
 import java.util.Map;
 import java.util.Random;
+import java.util.logging.Logger;
 
 @Stateless
 @Named
-public class OrderBusinessLogic {
+public class BookingBusinessLogic {
     @Inject
     private TaskForm taskForm;
 
@@ -31,9 +32,12 @@ public class OrderBusinessLogic {
         Map<String, Object> variables = delegateExecution.getVariables();
 
         // Set order attributes
-        //bookingEntity.setCustomer((String) variables.get("customer"));
-        //bookingEntity.setAddress((String) variables.get("address"));
-        //bookingEntity.setPizza((String) variables.get("pizza"));
+        bookingEntity.setCustomerName((String) variables.get("customerName"));
+        bookingEntity.setShippingAddress((String) variables.get("shippingAddress"));
+        bookingEntity.setEmail((String) variables.get("email"));
+        bookingEntity.setLocation((String) variables.get("location"));
+        bookingEntity.setLocationAddress((String) variables.get("locationAddress"));
+        bookingEntity.setSpecialRequest((String) variables.get("specialRequest"));
 
     /*
       Persist order instance and flush. After the flush the
